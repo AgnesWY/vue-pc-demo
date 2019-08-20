@@ -13,7 +13,10 @@ export const constantRouterMap = [
   },
   // 多层路由时，需要一个layout支撑你的父级路由
   {
-
+    path: '/404',
+    name: '404',
+    component: _import('404'),
+    hidden: true
   }
 ]
 

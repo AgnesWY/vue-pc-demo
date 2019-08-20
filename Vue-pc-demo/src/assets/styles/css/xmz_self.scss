@@ -1,0 +1,134 @@
+.siemens {
+  #app {
+    .sidebar-container {
+      background-color: #3c464b !important;
+
+      .el-submenu {
+        .el-menu-item {
+          background-color: #555f69 !important;
+        }
+
+        .is-active {
+          background: #009999 !important;
+        }
+      }
+
+    }
+
+    .el-submenu>.el-submenu__title {
+      background-color: #3c464b !important;
+    }
+
+    .logo {
+      background-color: #009999;
+      border-bottom: 1px solid #009999;
+    }
+
+    .el-button--primary,
+    .el-radio-button__orig-radio:checked+.el-radio-button__inner,
+    .el-switch.is-checked .el-switch__core,
+    .el-radio__input.is-checked .el-radio__inner {
+      background-color: #009999;
+      border-color: #009999;
+    }
+
+    .el-pagination.is-background .el-pager li:not(.disabled).active,
+    .el-tabs__active-bar {
+      background-color: #009999;
+    }
+
+    .el-tabs__item.is-active,
+    .el-radio__input.is-checked+.el-radio__label,
+    .el-button--text {
+      color: #009999;
+    }
+
+
+
+    .el-input__inner:focus,
+    .el-range-editor.is-active {
+      border-color: #009999;
+    }
+
+    /** 最新报警第一行颜色渐变动画 **/
+    @keyframes xmz_background-infinite {
+      0% {
+        background-color: #00999982;
+      }
+
+      50% {
+        background-color: #009999;
+      }
+
+      100% {
+        background-color: #00999982;
+      }
+    }
+
+    .new-row {
+      background-color: #00999982 !important;
+      animation: xmz_background-infinite 2s linear infinite;
+    }
+
+    .dashboard #carInfo .content .dragline,
+    .dashboard #carInfo .labelInfoActive {
+      background-color: #009999;
+    }
+
+    .dashboard #carInfo .labelInfoActive .left-top {
+      border-color: #009999;
+    }
+
+    .dashboard #carInfo .labelInfoActive .let-bottom {
+      border-color: #009999;
+    }
+
+    .dashboard #carInfo .labelInfoActive .right-top {
+      border-color: #009999;
+    }
+
+    .dashboard #carInfo .labelInfoActive .right-bottom {
+      border-color: #009999;
+    }
+
+    .dashboard .el-table__body tr.hover-row.current-row>td,
+    .dashboard .el-table__body tr.hover-row.el-table__row--striped.current-row>td,
+    .dashboard .el-table__body tr.hover-row.el-table__row--striped>td,
+    .dashboard .el-table__body tr.hover-row>td {
+      background: rgba(0, 153, 153, 0.95);
+    }
+
+    .dashboard .el-table__body tr.el-table__row:hover td {
+      background: rgba(0, 153, 153, 0.3);
+    }
+
+    .el-loading-spinner .path {
+      stroke: #009999;
+    }
+
+    .el-loading-spinner .el-loading-text,
+    .dept .is-current>.el-tree-node__content>.tree-expand .tree-label span,
+
+    .installAddress .is-current>.el-tree-node__content>.tree-expand .tree-label span {
+      color: #009999;
+    }
+
+    .el-button--primary.is-plain {
+      color: #fff;
+    }
+
+    .el-tabs__item:hover {
+      color: #009999;
+    }
+  }
+
+  .el-select-dropdown__item.selected {
+    color: #009999;
+  }
+
+  .el-dropdown-menu__item:not(.is-disabled):hover,
+  .el-dropdown-menu__item:focus {
+    background-color: #0099991a;
+    color: #009999;
+  }
+}

@@ -1,0 +1,23 @@
+.el-card {
+  border: 0;
+  padding: 0;
+}
+
+.el-popover {
+  padding: 0;
+}
+
+.popover-box {
+  padding-bottom: 10px;
+  .popover-title {
+    padding: 10px 20px;
+    background: rgb(245, 245, 245);
+    border-bottom: 1px solid #ccc;
+  }
+  .popover-content {
+    padding: 10px;
+    width: 100%;
+    height: 150px;
+    overflow: auto;
+  }
+}

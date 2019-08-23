@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Excel批量处理</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/xlsx/0.11.5/xlsx.core.min.js"></script>
+</head>
+<body>
+    <div>
+        <div class="import-part">
+            <input type="file" id="excel-file">
+            <!-- <input type="file" id="excel-file" style="display: none">
+            <a href="javascript:selectFile()">导入模版数据</a> -->
+            <p>考勤规则：（下面表格可直接编辑导出）</p>
+            <div id="result" contenteditable>
+
+            </div>
+            <!-- <button id="exportBtn" onclick="saveEdit()">保存修改</button> -->
+            
+        </div>
+        <div class="option-part">
+            <button id="exportBtn" onclick="exportExcel()">导出数据</button>
+        </div>
+
+    </div>
+
+<!-- <textarea id="area" style="width: 1000px; height:1000px"></textarea> -->
+
+<script>
+    var readData = [];
+    var optionData = [];
+    var transOpt = new Map();
+    // var tagTxt = ['上班缺卡','下班缺卡','迟到','早退','未打卡'];
+    var departArr = [['行政部','销售内勤','财务部','研发部','智慧物联','总经办','易安特','技服部','平台组','四川消防组','鑫四海','PMC','SMT','采购部','工程部','焊接组','机加车间','库房','模具组','品质部','主机组','注塑车间','装配车间','内勤体系','气体组','市场部'],
+                     ['admin','sell','finance','dev','wisdom','manager','yiante','tech','platform','sichuanPro','xinsihai','PMC','SMT','purchase','engineer','weld','machineWorkshop','storeHouse','mould','qa','mainMachine','injectWorkshop','fitWorkshop','service','gas','market']];
+    
+    //给input标签绑定change事件，一上传选中的.xls文件就会触发该函数
+    $('#excel-file').change(function(e) {
+        var files = e.target.files;
+        var fileReader = new FileReader();
+        fileReader.onload = function(ev) {
+            try {
+                var data = ev.target.result
+                var workbook = XLSX.read(data, {
+                    type: 'binary'
+                }) // 以二进制流方式读取得到整份excel表格对象
+                var persons = []; // 存储获取到的数据
+            } catch (e) {
+                console.log('文件类型不正确');
+                return;
+            }
+            readWorkbook(workbook)
+            // 表格的表格范围，可用于判断表头是否数量是否正确
+            var fromTo = '';
+            // 遍历每张表读取
+            for (var sheet in workbook.Sheets) {
+                if (workbook.Sheets.hasOwnProperty(sheet)) {
+                    fromTo = workbook.Sheets[sheet]['!ref'];
+                    persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+                    break; // 如果只取第一张表
+                }
+            }
+
+            readData = persons;
+            console.log(JSON.stringify(readData))
+        };
+        // 以二进制方式打开文件
+        fileReader.readAsBinaryString(files[0]);
+    });
+    // 整合数据
+    function handleDatas(){
+        var dataMap = new Map();
+        var tempArr = [];
+        $(readData).each(function(index,item){
+            // 处理数据
+            item.statusFlag = judgeStatus(item.部门, item.签到时间);
+            // 合并数据
+            if(!dataMap.has(item.帐号)){
+                dataMap.set(item.帐号,{
+                    '账号':item.帐号,
+                    '姓名':item.姓名,
+                    '部门':item.部门,
+                    dataList:[],
+                    
+
+                })
+            }
+            dataMap.get(item.帐号).dataList.push({
+                dailyDate:item.日期,
+                flag:item.statusFlag
+            });
+
+            
+
+        })
+        // 整合横向数据
+        tempArr = Array.from(dataMap.values())
+        $(tempArr).each(function(index,item){
+            var normalCount = 0;
+            var lateTimes = 0;
+            var leaveTimes = 0;
+            $(item.dataList).each(function(index,innerItem){
+
+                item[innerItem.dailyDate] = innerItem.flag;
+                if(innerItem.flag && innerItem.flag == '正常'){
+                    normalCount = normalCount + 1;
+
+                }
+                if(innerItem.flag && !(innerItem.flag.indexOf('迟到')< 0)){
+                    lateTimes = lateTimes + 1;
+                }
+                if(innerItem.flag && !(innerItem.flag.indexOf('早退')< 0)){
+                    leaveTimes = leaveTimes + 1;
+
+                }
+
+
+            });
+            item.正常天数 = normalCount;
+            item.迟到次数 = lateTimes;
+            item.早退次数 = leaveTimes;
+
+            delete item.dataList;
+
+        })
+
+        return tempArr
+        
+        // console.log(tempArr);
+    }
+    
+    // 处理时间
+    function splitTime(str){
+        var returnTimes =[];
+        if(str != "" && str.indexOf("-")>0){
+            returnTimes = str.split("-")
+        } else{
+            if(str != ""){
+                returnTimes.push(str);  
+            }
+        }
+
+        return returnTimes;
+
+    }
+    // 判断当前考勤的状态
+    function judgeStatus(depart, period){
+        var times = splitTime(period);
+        if(times.length == 0){
+            return '未打卡';
+        }else{
+            
+            console.log("配置数据："+transOpt);
+            var optTimeArr = $.extend(true,[],transOpt.get(depart));
+            // var optTimeArr = splitTime(optTime);
+            return compareTimes(optTimeArr,times);
+
+        }
+
+
+
+    }
+    // 比较两个时间大小
+    function compareTimes(optTimeArrOrigin,actArrOrigin){
+        var optTimeArr = $.extend(true,[],optTimeArrOrigin);
+        var actArr = $.extend(true,[],actArrOrigin);
+        // 处理日期数据方便比较
+        for(var i= 0; i< 2; i++){
+            optTimeArr[i] = Date.parse('2018-08-08 '+optTimeArr[i])
+            actArr[i] = Date.parse('2018-08-08 '+actArr[i])
+        }
+        // 打卡时间只有一个
+        if(actArrOrigin.length == 1){
+            var returnStr = '';
+            if(!(actArr[0] > optTimeArr[0])){
+              return '下班缺卡'
+            }
+            if(!(actArr[0] < optTimeArr[1])){
+                return '上班缺卡'
+
+            }
+            if(!(actArr[0] > optTimeArr[0])&& !(actArr[0] < optTimeArr[1])){
+                return '数据异常'
+
+            }
+        } 
+        // 其他
+        else{
+            
+ 
+            if(!(actArr[0] > optTimeArr[0])&& !(actArr[1] < optTimeArr[1])){
+                return "正常"
+            }
+            if(!(actArr[0] > optTimeArr[0]) && (actArr[1] < optTimeArr[1])){
+                var timer = formateMilisecond(optTimeArr[1] - actArr[1])
+                return "早退"+timer;
+
+            }
+            if((actArr[0] > optTimeArr[0]) && !(actArr[1] < optTimeArr[1])){
+                var timer = formateMilisecond(actArr[0]- optTimeArr[0])
+                return "迟到"+timer
+
+            }
+
+        }
+        
+
+    }
+
+
+    function  exportExcel(){
+        saveEdit()
+        var newData = handleDatas();
+        var newSheet = XLSX.utils.json_to_sheet(newData);
+        // createDownLoadLink(sheet2blob(newSheet),'导出的数据')
+        var blob = sheet2blob(newSheet,'考勤汇总')
+        createDownLoadLink(blob,'导出的数据.xlsx')
+
+    }
+    function saveEdit(){
+        var csv = table2csv($('#result table')[0]);
+
+		// var sheet = csv2sheet(csv);
+        var data = csv2JSON(csv);
+        // console.log('修改后的数据：'+JSON.parse(data))
+        optionData = JSON.parse(data);
+		// var blob = sheet2blob(sheet);
+		// openDownloadDialog(blob, '导出.xlsx');
+        // 整合配置数据
+        transOpt = handleOptions(optionData);
+
+        
+
+    }
+    // 整合配置数据
+    function handleOptions(optionData){
+        var newMap = new Map();
+        // console.log(optionData);
+        for(var i=0; i<optionData.length; i++){
+            newMap.set(optionData[i].部门,[optionData[i].上班时间,optionData[i].下班时间])
+
+        }
+        return newMap;
+
+
+    }
+    function readWorkbook(workbook) {
+		var sheetNames = workbook.SheetNames; // 工作表名称集合
+		var worksheet = workbook.Sheets[sheetNames[1]]; // 这里我们只读取第二张sheet
+        // var json = XLSX.utils.sheet_to_json(worksheet);
+		var csv = XLSX.utils.sheet_to_csv(worksheet);
+		document.getElementById('result').innerHTML = csv2table(csv);
+	}
+    // 公用函数
+    // 字符串转Buffer
+    function s2ab(s) {
+        var buf = new ArrayBuffer(s.length);
+        var view = new Uint8Array(buf);
+        for (var i=0; i!=s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+        return buf;
+    }
+
+    // 将一个sheet对象转化为blob对象
+	function sheet2blob(sheet, sheetName) {
+		sheetName = sheetName || 'sheet1';
+		var workbook = {
+			SheetNames: [sheetName],
+			Sheets: {}
+		};
+		workbook.Sheets[sheetName] = sheet;
+		// 生成excel的配置项
+		var wopts = {
+			bookType: 'xlsx', // 要生成的文件类型
+			bookSST: false, // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容性
+			type: 'binary'
+		};
+		var wbout = XLSX.write(workbook, wopts);
+		var blob = new Blob([s2ab(wbout)], {type:"application/octet-stream"});
+		return blob;
+	}
+    // 利用blob对象生成一个下载链接
+    function createDownLoadLink(url, saveName){
+        if(typeof url == 'object' && url instanceof Blob){
+            url = window.URL.createObjectURL(url)
+        }
+        // alink
+        var aLink = document.createElement('a');
+        aLink.href = url;
+        aLink.download = saveName || '';
+
+        var event;
+        if(window.MouseEvent){
+            event = new MouseEvent('click');
+        } else {
+            event = document.createEvent('MouseEvents');
+            event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        }
+        aLink.dispatchEvent(event);
+
+    }
+
+    /**
+	 * 通用的打开下载对话框方法，没有测试过具体兼容性
+	 * @param url 下载地址，也可以是一个blob对象，必选
+	 * @param saveName 保存文件名，可选
+	 */
+	function openDownloadDialog(url, saveName)
+	{
+		if(typeof url == 'object' && url instanceof Blob)
+		{
+			url = URL.createObjectURL(url); // 创建blob地址
+		}
+		var aLink = document.createElement('a');
+		aLink.href = url;
+		aLink.download = saveName || ''; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
+		var event;
+		if(window.MouseEvent) event = new MouseEvent('click');
+		else
+		{
+			event = document.createEvent('MouseEvents');
+			event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+		}
+		aLink.dispatchEvent(event);
+	}
+
+    // table转化为csv
+    function table2csv(table) {
+		var csv = [];
+		$(table).find('tr').each(function() {
+			var temp = [];	
+			$(this).find('td').each(function() {
+				temp.push($(this).html());
+			})
+			temp.shift(); // 移除第一个
+			csv.push(temp.join(','));
+		});
+		csv.shift();
+		return csv.join('\n');
+	}
+    // 将json转换为表格
+    function json2table(json){
+        var html = '<table>'; 
+
+    }
+    // 将csv转换成表格
+	function csv2table(csv)
+	{
+		var html = '<table>';
+		var rows = csv.split('\n');
+		rows.pop(); // 最后一行没用的
+		rows.forEach(function(row, idx) {
+			var columns = row.split(',');
+			columns.unshift(idx+1); // 添加行索引
+			if(idx == 0) { // 添加列索引
+				html += '<tr>';
+				for(var i=0; i<columns.length; i++) {
+					html += '<th>' + (i==0?'':String.fromCharCode(65+i-1)) + '</th>';
+				}
+				html += '</tr>';
+			}
+			html += '<tr>';
+			columns.forEach(function(column) {
+				html += '<td>'+column+'</td>';
+			});
+			html += '</tr>';
+		});
+		html += '</table>';
+		return html;
+	}
+    // csv转sheet对象
+	function csv2sheet(csv) {
+		var sheet = {}; // 将要生成的sheet
+		csv = csv.split('\n');
+		csv.forEach(function(row, i) {
+			row = row.split(',');
+			if(i == 0) sheet['!ref'] = 'A1:'+String.fromCharCode(65+row.length-1)+(csv.length-1);
+			row.forEach(function(col, j) {
+				sheet[String.fromCharCode(65+j)+(i+1)] = {v: col};
+			});
+		});
+		return sheet;
+	}
+    function removeEmptyArrayEle(arr){    
+        for(var i = 0; i < arr.length; i++) {
+        if(arr[i] == '') {
+            arr.splice(i,1);
+            i = i - 1; // i - 1 ,因为空元素在数组下标 2 位置，删除空之后，后面的元素要向前补位，
+                            // 这样才能真正去掉空元素,觉得这句可以删掉的连续为空试试，然后思考其中逻辑
+            }
+        }
+        return arr;
+    };
+
+    function csv2JSON(csv){
+
+        var lines=csv.split("\n");
+        var result = [];
+        var headers=removeEmptyArrayEle(lines[0].split(","));
+
+        for(var i=1;i<lines.length;i++){
+
+            var obj = {};
+            var currentline=removeEmptyArrayEle(lines[i].split(","));
+
+            for(var j=0;j<headers.length;j++){
+                obj[headers[j]] = currentline[j];
+            }
+
+            result.push(obj);
+
+        }
+
+        //return result; //JavaScript object
+        return JSON.stringify(result); //JSON
+    }
+
+    // 毫秒转换为时、分、秒
+    function  formateMilisecond(milliseconds){
+        var hours = parseInt((milliseconds % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var mins = parseInt((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = (milliseconds % (1000 * 60)) / 1000;
+        var returnStr ='';
+        hours > 0 ? returnStr += hours + "小时" : null;
+        mins > 0 ? returnStr += mins + "分钟" : null;
+        seconds > 0 ? returnStr += seconds + "秒" : null;
+        return returnStr;
+
+
+
+    }
+
+
+
+</script>
+</body>
+</html> 

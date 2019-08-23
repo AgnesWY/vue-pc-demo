@@ -10,6 +10,8 @@
     "stage-2"
   ],
   "plugins": ["transform-vue-jsx", "transform-runtime"],
+  // 下面指的是在生成的文件中，不产生注释
+  "comments": false,
   "env": {
     "test": {
       "presets": ["env", "stage-2"]

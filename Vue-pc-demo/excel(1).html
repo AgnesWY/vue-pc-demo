@@ -209,10 +209,30 @@
             console.log("配置数据："+transOpt);
             var optTimeArr = $.extend(true,[],transOpt.get(depart));
             // var optTimeArr = splitTime(optTime);
-            return compareTimes(optTimeArr,times);
+            // 针对 两班倒的部门
+            if((depart == '机加车间' || depart == '注塑车间') && times.length > 1 && returnCompares(times[0],optTimeArr[1])){
+                var newOptArr =  [];
+                newOptArr.push(optTimeArr[1]);
+                newOptArr.push(optTimeArr[0]);
+                
+                return compareTimes(newOptArr,times);
+
+
+            } else{
+                return compareTimes(optTimeArr,times);
+            }
+            
 
         }
 
+
+
+    }
+    // 工具-比较两个时间大小  小于等于 返回true
+    function returnCompares(time1,time2){
+        var timer1 = Date.parse('2018-08-08 '+time1);
+        var timer2 = Date.parse('2018-08-08 '+time2);
+        return !(time1 > timer2);
 
 
     }
@@ -235,8 +255,8 @@
                 return '上班缺卡'
 
             }
-            if(!(actArr[0] > optTimeArr[0])&& !(actArr[0] < optTimeArr[1])){
-                return '数据异常'
+            if((actArr[0] > optTimeArr[0]) && (actArr[0] < optTimeArr[1])){
+                return '数据异常'+actArrOrigin[0]
 
             }
         } 

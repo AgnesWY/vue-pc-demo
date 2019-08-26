@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 const _import = require('./_import_'+ process.env.NODE_ENV)
 
-
+// 多层路由时，需要一个layout支撑你的父级路由
 Vue.use(Router)
 
 export const constantRouterMap = [
@@ -11,7 +11,7 @@ export const constantRouterMap = [
     name: 'HelloWorld',
     component: _import('start')
   },
-  // 多层路由时，需要一个layout支撑你的父级路由
+  
   {
     path: '/404',
     name: '404',

@@ -18,8 +18,8 @@ import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 // 引入自定义的全局样式
 // import "normalize.css"; // normalize.css 样式格式化
-import "@/assets/styles/index.scss"; // 全局自定义的css样式
-import '@/assets/styles/css/self.css'
+import "@/styles/index.scss"; // 全局自定义的css样式
+import '@/styles/self.scss'
 
 Vue.use(Element);
 

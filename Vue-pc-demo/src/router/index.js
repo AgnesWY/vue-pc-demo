@@ -2,14 +2,22 @@ import Vue from 'vue'
 import Router from 'vue-router'
 const _import = require('./_import_'+ process.env.NODE_ENV)
 
-// 多层路由时，需要一个layout支撑你的父级路由
+// 多层路由时，需要一个layout支撑你的父级路由：父级路由中需要一个 router-view
+import layout from '@/views/layout/index'
 Vue.use(Router)
 
 export const constantRouterMap = [
   {
-    path: '/',
-    name: 'HelloWorld',
-    component: _import('start')
+    path: '/main',
+    name: 'main',
+    component: layout,
+    children:[
+      {
+        path: 'test',
+        name: 'HelloWorld',
+        component:_import('start')
+      }
+    ]
   },
   
   {

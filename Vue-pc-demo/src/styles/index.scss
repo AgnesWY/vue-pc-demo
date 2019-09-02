@@ -1,0 +1,176 @@
+// 此文件包含一些基础样式的修改---基础的css  和一些全局的使用
+// 全局的配置定义
+@import './variables.scss';
+// 外部的定义 方便引用
+@import './mixin.scss';
+// 全局覆盖 element-ui 的样式
+@import './element-ui.scss';
+
+
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
+  overflow: hidden;
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, webfont, Hiragino Sans GB, Arial, sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+div:focus {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.butbxPlain105 {
+  width: 105px;
+  height: 36px;
+}
+.noheaderCHeight{
+  height: calc(100vh - 70px);
+}
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+
+
+/*修改滚动条样式统一 start*/
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: #ececec;
+  margin: -2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aaaaaa;
+  min-height: 150px;
+  min-width: 150px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:vertical:hover {
+  background: #555555
+}
+
+::-webkit-scrollbar-thumb:horizontal:hover {
+  background: #555555
+}
+
+/*修改滚动条样式统一 end*/
+
+.el-submenu__title i.iconfont,
+.el-menu-item i.iconfont {
+  color: #fff;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+//main-container全局样式
+.app-main {
+  min-height: 100%;
+}
+
+.filter-container {
+
+
+  .filter-item {
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  .filter-item.el-input {
+    margin-right: 5px;
+  }
+
+  .el-row {
+    .el-col-6 {
+      h4 {
+        color: #363f44
+      }
+    }
+  }
+}
+
+.app-container {
+  margin: 10px;
+  background-color: #fff;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
+
+  // 表格、分页包含框
+  .grid-container {
+    .el-card {
+      border: 0;
+      border-radius: 0;
+    }
+
+    .el-card__header {
+      background-color: #f5f5f5;
+      color: #606266;
+      padding: 10px 20px;
+      margin-bottom: 10px;
+    }
+
+    .el-card__body {
+      padding: 0 10px 0 10px;
+      height: calc(100vh - 135px);
+      overflow: auto;
+    }
+
+    .pagination-container {
+      text-align: right;
+    }
+
+    .el-tabs__header {
+      padding: 0 2px;
+    }
+  }
+}
+
+ul li {
+  list-style: none;
+}

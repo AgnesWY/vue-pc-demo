@@ -1,0 +1,1827 @@
+// 不应该有覆盖element的样式啊
+// 这里应该是设置全局的布局 如页面的搜索框位置，查询框位置等 pagecontainer
+#app .el-table th>.cell {
+    font-weight: 500
+  }
+  
+  #app .el-input__inner {
+    height: 36px;
+    line-height: 36px;
+    border-radius: 2px;
+  }
+  
+  #app .el-button--small {
+    padding: 10px 15px;
+    border-radius: 2px;
+  }
+  
+  #app .dept .tree-expand .tree-label:first-child,
+  #app .installAddress .tree-expand .tree-label:first-child {
+    display: none;
+  }
+  
+  #app .el-input--mini .el-input__inner,
+  #app .el-pagination__editor.el-input .el-input__inner {
+    height: 28px !important;
+    line-height: 28px;
+  }
+  
+  #app .el-scrollbar__view ul li ul li ul li {
+    padding-left: 90px !important;
+  }
+  
+  #app .el-input__icon {
+    line-height: 35px;
+  }
+  
+  #app .el-range-editor--small .el-range__icon,
+  #app .el-range-editor--small .el-range__close-icon {
+    line-height: 24px;
+  }
+  
+  #app .el-dialog .el-button--primary {
+    margin-left: 5px;
+  }
+  
+  #app .el-dialog .imcatPicBut .el-button-group .el-button--primary{
+    margin: 0
+  }
+  #app .el-range-editor.el-input__inner {
+    vertical-align: middle;
+  }
+  
+  #app .el-input--small .el-input__inner {
+    vertical-align: -1px;
+  }
+  
+  #app .el-autocomplete .el-input__inner {
+    vertical-align: -2px;
+  }
+  
+  #app .el-button--small {
+    vertical-align: 0;
+  }
+  
+  #app .wallet .el-button--small {
+    vertical-align: -1px;
+  }
+  
+  #app .nodata_img_icon {
+    margin: 0 auto;
+    display: block;
+    width: 320px;
+  }
+  
+  .el-tabs--border-card>.el-tabs__content {
+    padding: 10px;
+  }
+  
+  #app .sidebar-container {
+    background-color: #272C34 !important;
+  }
+  
+  .sidebar-container .el-scrollbar__wrap {
+    overflow: hidden;
+    overflow-y: scroll;
+    max-height: calc(100vh - 50px);
+    width: 100%;
+    margin: 0 !important;
+  }
+  
+  .sidebar-container .el-scrollbar__wrap::-webkit-scrollbar {
+    width: 0;
+  }
+  
+  .sidebar-container .el-picker-panel__footer .el-picker-panel__link-btn {
+    margin-left: 10px
+  }
+  
+  .sidebar-container .el-submenu__icon-arrow {
+    margin-top: -3px
+  }
+  
+  .sidebar-container .el-submenu__title i {
+    color: #f5f7fa;
+  }
+  
+  .menu_permission_routers .el-menu-item:hover,
+  .menu_permission_routers .el-menu-item:focus {
+    background: transparent !important;
+  }
+  
+  .menu_permission_routers .el-menu .menu-wrapper>a>.el-menu-item {
+    color: #c0c4cc !important;
+  }
+  
+  /** 循环动画  用户通讯中 闪烁 **/
+  @keyframes rotate-shadowColor {
+    0% {
+      box-shadow: 0px 0px 2px 1px rgba(82, 189, 39, 0.4);
+    }
+  
+    50% {
+      box-shadow: 0px 0px 4px 2px rgba(82, 189, 39, 0.8);
+    }
+  
+    100% {
+      box-shadow: 0px 0px 2px 1px rgba(82, 189, 39, 0.4);
+    }
+  }
+  
+  /** 循环动画  旋转 **/
+  @keyframes rotate-Cluster180 {
+    from {
+      transform: rotate(0deg)
+    }
+  
+    to {
+      transform: rotate(360deg)
+    }
+  }
+  
+  /** 上下运动 gis表格展开收起**/
+  @keyframes updown-infinite {
+    0% {
+      top: -1px;
+    }
+  
+    50% {
+      top: 5px;
+    }
+  
+    100% {
+      top: -1px;
+    }
+  }
+  
+  /** 左右运动 光束**/
+  @keyframes leftr-infinite {
+    0% {
+      left: -60px;
+    }
+  
+    50% {
+      left: 250px;
+    }
+  
+    100% {
+      left: -60px;
+    }
+  }
+  
+  /** 报警图标颜色渐变动画 **/
+  @keyframes color-infinite {
+    0% {
+      transform: scale(1)
+    }
+  
+    50% {
+      transform: scale(1.3)
+    }
+  
+    100% {
+      transform: scale(1)
+    }
+  }
+  
+  /** 最新报警第一行颜色渐变动画 **/
+  @keyframes background-infinite {
+    0% {
+      background-color: #497efe 82;
+    }
+  
+    50% {
+      background-color: #497efe;
+    }
+  
+    100% {
+      background-color: #497efe 82;
+    }
+  }
+  
+  /*定义动画 上下旋转*/
+  .rotatejiantouOriginal {
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    transform: rotate(0deg);
+  }
+  
+  .transitionWidth {
+    -webkit-transition: width 0.2s;
+    transition: width 0.2s;
+  }
+  
+  .rotatejiantou {
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    transform: rotate(180deg);
+  }
+  
+  .bounce-enter-active {
+    animation: bounce-in 0.5s;
+  }
+  
+  .bounce-leave-active {
+    animation: bounce-in .5s reverse;
+  }
+  
+  @keyframes bounce-in {
+    0% {
+      transform: scale(1);
+    }
+  
+    50% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  /* 四边小角 start*/
+  .left-top {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #456DA8;
+    border-left: 2px solid #456DA8;
+    top: -2px;
+    left: -2px;
+  }
+  
+  .right-top {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #456DA8;
+    border-right: 2px solid #456DA8;
+    right: -1px;
+    top: -1px;
+  }
+  
+  .let-bottom {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-left: 2px solid #456DA8;
+    border-bottom: 2px solid #456DA8;
+    bottom: -1px;
+    left: -1px;
+  }
+  
+  .right-bottom {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #456DA8;
+    border-bottom: 2px solid #456DA8;
+    bottom: -1px;
+    right: -1px;
+  }
+  
+  .left-top-s {
+    position: absolute;
+    width: 30px;
+    height: 15px;
+    border-top: 2px solid #43b3fa;
+    border-left: 2px solid #43b3fa;
+    top: -1px;
+    left: -1px;
+  }
+  
+  .right-top-s {
+    position: absolute;
+    width: 30px;
+    height: 15px;
+    border-top: 2px solid #43b3fa;
+    border-right: 2px solid #43b3fa;
+    right: -1px;
+    top: -1px;
+  }
+  
+  .let-bottom-s {
+    position: absolute;
+    width: 30px;
+    height: 15px;
+    border-left: 2px solid #43b3fa;
+    border-bottom: 2px solid #43b3fa;
+    bottom: -2px;
+    left: -2px;
+  }
+  
+  .right-bottom-s {
+    position: absolute;
+    width: 30px;
+    height: 15px;
+    border-right: 2px solid #43b3fa;
+    border-bottom: 2px solid #43b3fa;
+    bottom: -2px;
+    right: -2px;
+  }
+  
+  /*四小边 end*/
+  /*gis检索框样式start*/
+  /*检索框里面的颜色*/
+  #searchStyle .comFontSize {
+    color: #fff;
+  }
+  
+  #searchStyle .el-dropdown-link {
+    padding: 11px 10px 0 10px;
+    display: block;
+    float: left;
+  }
+  
+  #searchStyle .el-dropdown {
+    margin: 0px 5px 0 9px;
+  }
+  
+  #searchStyle .seachSty {
+    line-height: 47px;
+    display: inline-block;
+    position: relative;
+    width: 288px;
+  }
+  
+  #searchStyle .iconfont.cur {
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    vertical-align: top;
+  }
+  
+  #searchStyle .icon-fangdajing,
+  #searchStyle .icon-iconfontguanbi {
+    color: #fff;
+    font-size: 24px;
+    position: absolute;
+    line-height: 50px;
+    cursor: pointer;
+  }
+  
+  #searchStyle .icon-ditu {
+    color: #fff;
+    font-size: 24px;
+    position: absolute;
+    line-height: 50px;
+    margin-left: 40px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  #searchStyle .icon-ditu:hover {
+    color: #43b3fa;
+  }
+  
+  #searchStyle .seachDiv {
+    position: absolute;
+    height: 50px;
+    width: 410px;
+    left: 20px;
+    top: 113px;
+    border-radius: 5px;
+    background: rgba(12, 43, 74, 0.95);
+    z-index: 999;
+  }
+  
+  #searchStyle .el-input--medium .el-input__inner {
+    width: 230px;
+    cursor: text;
+  }
+  
+  #searchStyle .el-input__inner::-webkit-input-placeholder {
+    color: #acacac;
+    font-size: 14px;
+  }
+  
+  #searchStyle .el-input__inner {
+    color: #fff;
+    border-left: 1px solid #fff;
+  }
+  
+  #searchStyle .el-input__inner::-webkit-input-placeholder {
+    color: #fff;
+  }
+  
+  #searchStyle .el-input-dropdown__empty {
+    color: #fff;
+  }
+  
+  #searchStyle .el-input__inner {
+    background: rgba(12, 43, 74, 0);
+    border: 0;
+    border-radius: 0;
+    font-size: 15px;
+    color: #fff;
+    border-left: 1px solid #fff;
+    padding-right: 20px !important;
+  }
+  
+  
+  
+  /*gis检索框样式end*/
+  /*覆盖表格样式start*/
+  .xhsgis-custom-default .el-table th {
+    background-color: #f2f2f2;
+    color: #878d99;
+  }
+  
+  .xhsgis-custom-default .dashboard .el-table,
+  .xhsgis-custom-default .dashboard .el-table thead {
+    color: #fff !important;
+    border: 0 !important
+  }
+  
+  .xhsgis-custom-default .dashboard .el-table th>.cell,
+  .xhsgis-custom-default .dashboard .el-table__empty-text {
+    color: #fff
+  }
+  
+  .xhsgis-custom-default .dashboard .el-table td,
+  .xhsgis-custom-default .dashboard .el-table th.is-leaf {
+    border: 0;
+  }
+  
+  .xhsgis-custom-default .dashboard .el-table__fixed-right::before,
+  .xhsgis-custom-default .dashboard .el-table__fixed::before,
+  .xhsgis-custom-default .dashboard .el-table::before {
+    height: 0;
+  }
+  
+  .xhsgis-custom-default .dashboard .el-table,
+  .xhsgis-custom-default .dashboard .el-table tr,
+  .xhsgis-custom-default .dashboard .el-table th,
+  .xhsgis-custom-default .dashboard .el-table__body-wrapper.is-scrolling-left~.el-table__fixed {
+    background: transparent;
+    cursor: pointer;
+  }
+  
+  .xhsgis-custom-default .dashboard .system_table .el-table,
+  .xhsgis-custom-default .dashboard .system_table .el-table tr,
+  .xhsgis-custom-default .dashboard .system_table .el-table th,
+  .xhsgis-custom-default .dashboard .system_table .el-table__body-wrapper.is-scrolling-left~.el-table__fixed {
+    cursor: default;
+  }
+  
+  .xhsgis-custom-default .dashboard .el-table__fixed,
+  .xhsgis-custom-default .dashboard .el-table__fixed-right {
+    background: rgba(10, 37, 66, 0.7);
+  }
+  
+  .xhsgis-custom-default .dashboard .el-table__body tr.hover-row.current-row>td,
+  .xhsgis-custom-default .dashboard .el-table__body tr.hover-row.el-table__row--striped.current-row>td,
+  .xhsgis-custom-default .dashboard .el-table__body tr.hover-row.el-table__row--striped>td,
+  .xhsgis-custom-default .dashboard .el-table__body tr.hover-row>td {
+    background: rgba(10, 37, 66, 0.95);
+  }
+  
+  .xhsgis-custom-default .dashboard .el-table__body tr.el-table__row:hover td {
+    background: rgba(73, 126, 254, 0.3);
+  }
+  
+  .xhsgis-custom-default .dashboard .el-table--group::after,
+  .el-table--border::after {
+    width: 0;
+  }
+  
+  /**覆盖表格样式end*/
+  
+  
+  /** 下拉项样式覆盖start **/
+  #searchStyle .el-autocomplete-suggestion li,
+  .xhsgis-custom-default .mappopper .el-select-dropdown__list li {
+    color: #fff !important;
+  }
+  
+  #searchStyle .el-autocomplete-suggestion li.highlighted {
+    background-color: #4592fc;
+  }
+  
+  #searchStyle .el-autocomplete-suggestion li:hover,
+  .xhsgis-custom-default .mappopper .el-select-dropdown__list li:hover {
+    background-color: #4592fc;
+  }
+  
+  #searchStyle .el-autocomplete-suggestion__wrap,
+  .xhsgis-custom-default .mappopper .el-select-dropdown {
+    background-color: rgba(14, 41, 71, 0.955);
+    border: 1px solid #1c375c;
+  }
+  
+  .xhsgis-custom-default .mappopper .el-select-dropdown__item.hover,
+  .xhsgis-custom-default .mappopper .el-select-dropdown__item:hover {
+    background-color: #4592fc;
+  }
+  
+  /** 下拉项样式覆盖end **/
+  /** 监控列表框样式 start **/
+  .xhsgis-custom-default .dashboard #carInfo .carInfo {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    width: calc(100vw - 80px);
+    height: 420px;
+    min-height: 260px;
+    z-index: 999;
+  }
+  
+  
+  .xhsgis-custom-default .dashboard #carInfo .tuptree {
+    left: 20px;
+    width: calc(100vw - 275px);
+  }
+  
+  .xhsgis-custom-default .zoom .dashboard #carInfo .carInfo {
+    width: calc(100vw - 70px);
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .tup {
+    height: 0;
+    min-height: 0;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .tup .headInfo {
+    height: 0;
+    overflow: hidden;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .tup .content {
+    padding: 0;
+    opacity: 0;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .tup i.xiangxiaIcon {
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .labelInfo {
+    color: #fff;
+    width: 100px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    background: rgba(10, 37, 66, 0.95);
+    position: relative;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .policeBadgeSty,
+  .xhsgis-custom-default .dashboard #carInfo .abnomalBadgeSty {
+    background: #da1c1c;
+    border-radius: 8px;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: -9px;
+    font-size: 12px;
+    line-height: 0;
+    padding: 8px 6px;
+    z-index: 2;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .content {
+    background: rgba(10, 37, 66, 0.95);
+    height: calc(100% - 38px);
+    padding: 9px;
+    margin-top: 8px;
+    width: 100%;
+    position: relative;
+    opacity: 1;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .content .dragline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #497efe;
+    cursor: n-resize;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .labelInfoActive {
+    background: #497efe;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .labelInfoActive i {
+    background: #0b6a26;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .rightTab {
+    float: right;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .rightTab span {
+    color: #fff;
+    border-radius: 14px;
+    background: rgba(12, 43, 74, 0.95);
+    padding: 8px 20px;
+    cursor: pointer;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .carInfoOpen {
+    position: absolute;
+    bottom: -62px;
+    left: 50%;
+    margin-left: -30px;
+    background: rgba(12, 43, 74, 0.95);
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .xiangxiaIcon {
+    font-size: 20px;
+    color: #fff;
+    display: inline-block;
+    position: relative;
+    top: -5px;
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
+    animation: updown-infinite 1.9s linear infinite;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .labelInfoActive .left-top {
+    left: -4px;
+    top: -4px;
+    border-color: #497efe;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .labelInfoActive .let-bottom {
+    left: -4px;
+    bottom: -4px;
+    border-color: #497efe;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .labelInfoActive .right-top {
+    right: -4px;
+    top: -4px;
+    border-color: #497efe;
+  }
+  
+  .xhsgis-custom-default .dashboard #carInfo .labelInfoActive .right-bottom {
+    right: -4px;
+    bottom: -4px;
+    border-color: #497efe;
+  }
+  
+  /** 监控列表框样式 end **/
+  /*表格滚动条颜色 start*/
+  .xhsgis-custom-default .dashboard ::-webkit-scrollbar {
+    widows: 0;
+    height: 0;
+  }
+  
+  .xhsgis-custom-default .dashboard ::-webkit-scrollbar-track-piece {
+    background-color: #071d48;
+    margin: -2px;
+  }
+  
+  .xhsgis-custom-default .dashboard ::-webkit-scrollbar-thumb {
+    background-color: rgb(4, 22, 39);
+  }
+  
+  .xhsgis-custom-default .dashboard ::-webkit-scrollbar-track {
+    background-color: rgb(10, 37, 66);
+  }
+  
+  /*表格滚动条颜色 end*/
+  /** 个人菜单主题样式 start **/
+  .xhsgis-custom-default #setTool .setBox {
+    position: absolute;
+    top: 75px;
+    right: 19px;
+    line-height: 25px;
+    background: rgba(12, 43, 74, .8);
+    height: 0;
+    width: 220px;
+    overflow: hidden;
+    z-index: 999;
+    -webkit-transition: height 0.1s linear;
+    transition: height 0.1s linear;
+  }
+  
+  .xhsgis-custom-default #setTool .setBox .left-top {
+    left: 0;
+    top: 0;
+  }
+  
+  .xhsgis-custom-default #setTool .setBox .right-top {
+    right: 0;
+    top: 0;
+  }
+  
+  .xhsgis-custom-default #setTool .setBox .let-bottom {
+    bottom: 0;
+    left: 0;
+  }
+  
+  .xhsgis-custom-default #setTool .setBox .right-bottom {
+    bottom: 0;
+    right: 0;
+  }
+  
+  .xhsgis-custom-default #setTool .setBox img.activeTheme {
+    display: none;
+  }
+  
+  .xhsgis-custom-default #setTool .setBox .cur img.activeTheme {
+    display: block;
+    ;
+  }
+  
+  .xhsgis-custom-default #setTool .animationDownHeight {
+    height: 240PX;
+  }
+  
+  .xhsgis-custom-default #setTool .setBox p {
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 5px 0 0 6px;
+  }
+  
+  .xhsgis-custom-default #setTool .setBox p.iconfont {
+    margin: 5px 0 0 0;
+  }
+  
+  .xhsgis-custom-default #setTool .setBox .points_check {
+    padding: 5px;
+  }
+  
+  .xhsgis-custom-default #setTool .setBox .points_check p.iconfont {
+    margin: 0 0 2px -3px;
+  }
+  
+  .xhsgis-custom-default #setTool .setBox .points_check p.hld {
+    margin: 0 0 0 1px;
+  }
+  
+  .xhsgis-custom-default #setTool .setBox .points_check .el-checkbox .el-checkbox__label {
+    color: #fff
+  }
+  
+  .xhsgis-custom-default #setTool .setBox .points_check .is-checked .el-checkbox__label {
+    color: #497efe
+  }
+  
+  .xhsgis-custom-default #setTool .setBox .points_check .el-checkbox__inner {
+    background-color: transparent;
+  }
+  
+  .xhsgis-custom-default #setTool .setBox p:before {
+    margin-right: 8px;
+  }
+  
+  .xhsgis-custom-default #setTool .themeSelect {
+    height: 80px;
+    display: inline-block;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .xhsgis-custom-default #setTool .themeSelect span {
+    font-size: 12px;
+    text-align: center;
+    display: block;
+  }
+  
+  .xhsgis-custom-default #setTool .themeImg {
+    width: 55px;
+    height: 55px;
+    border: 1px solid #7ecef4;
+  }
+  
+  .xhsgis-custom-default #setTool .activeTheme {
+    position: absolute;
+    right: 0;
+  }
+  
+  /** 个人菜单样式 end **/
+  /**右上角工具栏样式 start*****************/
+  .xhsgis-custom-default .dashboard #signTool .el-input__inner {
+    width: 95px;
+    border: 0;
+    background: rgba(12, 43, 74, .0)
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .toolbar {
+    position: absolute;
+    top: 23px;
+    right: 20px;
+    padding: 0;
+    background: rgba(12, 43, 74, .95);
+    height: 50px;
+    width: 52px;
+    z-index: 999;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .widening {
+    width: 442px;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .opendAndshrink {
+    cursor: pointer;
+    color: #fff;
+    display: inline-block;
+    font-size: 20px;
+    padding-left: 0;
+    float: left;
+    width: 50px;
+    text-align: center;
+    line-height: 42px;
+    border: 3px solid transparent;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .slideBar {
+    display: inline-block;
+    margin: 15px 0 0 0;
+    width: 0;
+    overflow: hidden;
+    height: 21px;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .widening .slideBar {
+    width: 390px;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .screenData {
+    color: #fff;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .styCom {
+    display: inline-block;
+    border-left: 1px solid #fff;
+    font-size: 15px;
+    color: #fff;
+    height: 22px;
+    line-height: 22px;
+    padding: 0 12px;
+    cursor: pointer;
+    -webkit-transition: color 0.1s linear;
+    transition: color 0.1s linear;
+    float: left;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .slideBar span.on {
+    color: #52bd27;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .styCom span.adbut {
+    width: 45px;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .styCom i.iconfont {
+    width: 17px;
+    display: inline-block;
+    overflow: hidden;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .icon-tool-cabinet_icon:before,
+  .xhsgis-custom-default .dashboard #signTool .icon-jiaotong:before,
+  .xhsgis-custom-default .dashboard #signTool .icon-fangda:before,
+  .icon-tuichuquanping:before,
+  .icon-gpsbiaozhudianguanli:before,
+  .icon-theme:before,
+  .icon-peizhi:before {
+    margin-right: 5px;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .icon-tool-cabinet_icon {
+    font-size: 13px;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .el-col-12 {
+    width: 100%;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .el-icon--right {
+    color: #fff;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .el-dropdown {
+    font-size: 15px;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .toolContent {
+    position: absolute;
+    background: rgba(12, 43, 74, .8);
+    padding: 3px 14px;
+    top: 75px;
+    right: 245px;
+    z-index: 1;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .pointss {
+    right: 195px;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .toolContent p {
+    color: #fff;
+    line-height: 30px;
+    font-size: 13px;
+    cursor: pointer;
+    -webkit-transition: color 0.1s linear;
+    transition: color 0.1s linear;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .toolContent p.on {
+    color: #52bd27;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .icon-huodongqizhibiaoji:before,
+  .xhsgis-custom-default .dashboard #signTool .icon-ruler:before {
+    margin-right: 8px;
+  }
+  
+  .xhsgis-custom-default .dashboard #signTool .signToolHide {
+    display: none;
+  }
+  
+  .xhsgis-custom-default .dashboard div.hotCities div.hotbut span {
+    cursor: pointer;
+    -webkit-transition: color 0.1s linear;
+    transition: color 0.1s linear;
+  }
+  
+  .xhsgis-custom-default .dashboard div.hotCities div.hotbut span:hover,
+  .xhsgis-custom-default .dashboard div.hotCities div.hotbut span.cur {
+    color: #0b6a26;
+  }
+  
+  /**地址切换样式覆盖 start**/
+  .xhsgis-custom-default .mappopper {
+    position: absolute;
+    background: rgba(12, 43, 74, .8);
+    min-width: 100px;
+    border-radius: 4px;
+    border: 1px solid #0d2e4f;
+    padding: 12px;
+    z-index: 2000;
+    color: #fff;
+    line-height: 1.4;
+    text-align: justify;
+    font-size: 14px;
+    -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+  }
+  
+  .xhsgis-custom-default .mappopper .el-input__inner {
+    background: rgba(12, 43, 74, 0);
+    border: 0;
+    border-radius: 0;
+    font-size: 15px;
+    color: #fff;
+    padding-right: 20px !important;
+  }
+  
+  .xhsgis-custom-default .mappopper[x-placement^=bottom] .popper__arrow {
+    top: -6px;
+    left: 50%;
+    margin-right: 3px;
+    border-top-width: 0;
+    border-bottom-color: #456da8;
+  }
+  
+  .xhsgis-custom-default .mappopper[x-placement^=bottom] .popper__arrow::after {
+    top: 1px;
+    margin-left: -6px;
+    border-top-width: 0;
+    border-bottom-color: #456da8;
+  }
+  
+  /*覆盖省市区 选择框*/
+  .xhsgis-custom-default .mappopper .el-scrollbar__wrap {
+    height: 180px;
+  }
+  
+  /**地址切换样式覆盖 **/
+  .xhsgis-custom-default .dashboard .pointwind {
+    background-color: rgba(12, 43, 74, 0.95);
+    padding: 5px;
+    width: 300px;
+  }
+  
+  .xhsgis-custom-default .dashboard .pointwind input {
+    width: 100%;
+    line-height: 30px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    border-radius: 5px;
+    color: #fff;
+    border: 1px solid #fff;
+  }
+  
+  .xhsgis-custom-default .dashboard .pointwind textarea {
+    width: 100%;
+    padding-left: 10px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 14px;
+  }
+  
+  .xhsgis-custom-default .dashboard .pointwind textarea::-webkit-input-placeholder {
+    color: #fff;
+    font-size: 14px;
+  }
+  
+  /** 工具栏 end **/
+  /*覆盖省市区 选择框*/
+  #setBook .el-scrollbar__wrap {
+    height: 180px;
+  }
+  
+  /*覆盖 高德地图的hover标题框*/
+  .amap-ui-pointsimplifier-container .gistitle {
+    color: #fff !important;
+    background: rgba(12, 43, 74, 0.95) !important;
+    border: 0 !important;
+    padding: 7px 10px !important;
+    font-size: 14px !important;
+    border-radius: 5px;
+  }
+  
+  .amap-ui-pointsimplifier-container .overlay-title.gistitle:after {
+    border-top-color: #fff !important;
+  }
+  
+  
+  /* <!-- 改变折叠后的菜单 弹出框背景色 --> */
+  div.el-menu--vertical .el-menu--popup .el-menu-item:hover,
+  div.el-menu--vertical .el-menu--popup .el-menu-item:focus {
+    background-color: rgb(47, 64, 80) !important
+  }
+  
+  /** 通知弹窗样式覆盖 start*/
+  .el-notification__content {
+    margin: 0;
+    line-height: 25px;
+  }
+  
+  /** 通知弹窗样式覆盖 end*/
+  .filter-container h4 {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .filter-container h4 span.desc {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /*10w聚合点 样式覆盖 start*/
+  .clusterCls .cluster_back {
+    /* transform-origin: 50% 50%; */
+    animation: rotate-Cluster180 1.9s linear infinite;
+  }
+  
+  .amap-marker-label {
+    position: absolute;
+    border: 0;
+    background-color: #0c2c4b;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+  }
+  
+  
+  /*10w聚合点 样式覆盖 end*/
+  
+  /**定义table最大自适应高度 start*/
+  .calc330 .el-table__body-wrapper,.calc330 .el-table__fixed-body-wrapper {
+    max-height: calc(100vh - 305px);
+    overflow-y: auto;
+  }
+  .calc245 .el-table__body-wrapper,.calc245 .el-table__fixed-body-wrapper {
+    max-height: calc(100vh - 283px);
+    overflow-y: auto;
+  }
+  
+  .calc318 .el-table__body-wrapper,.calc318 .el-table__fixed-body-wrapper {
+    max-height: calc(100vh - 318px);
+    overflow-y: auto;
+  }
+  
+  .calc331 .el-table__body-wrapper,.calc331 .el-table__fixed-body-wrapper {
+    max-height: calc(100vh - 331px);
+    overflow-y: auto;
+  }
+  
+  .calc330 .el-table__body-wrapper,.calc330 .el-table__fixed-body-wrapper {
+    max-height: calc(100vh - 330px);
+    overflow-y: auto;
+  }
+  
+  .calc208 .el-table__body-wrapper,.calc208 .el-table__fixed-body-wrapper {
+    max-height: calc(100vh - 208px);
+    overflow-y: auto;
+  }
+  
+  .calc260 .el-table__body-wrapper,.calc260 .el-table__fixed-body-wrapper {
+    max-height: calc(100vh - 260px);
+    overflow-y: auto;
+  }
+  .calc400 .el-table__body-wrapper {
+    max-height: calc(100vh - 400px);
+    overflow-y: auto;
+  }
+  
+  /**定义table最大自适应高度 end*/
+  /* 图标大小重置 */
+  .icon-zhongzhimima,
+  .icon-weizhi,
+  .icon-quanxian,
+  .icon-peizhi,
+  .icon-xiangqingchakan {
+    font-size: 12px;
+  }
+  
+  /*表格按钮图标大小 重置 start*/
+  .el-table button i {
+    font-size: 16px;
+  }
+  
+  .el-table .el-button--mini {
+    padding: 5px 10px;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+  
+  .el-table .el-button--mini:last-child {
+    margin-right: 0px;
+  }
+  
+  /*表格按钮图标大小 重置 end*/
+  
+  /** 标题 提示样式重置 start **/
+  .el-tooltip__popper.is-dark {
+    background: #00000085;
+    color: #fff;
+    padding: 5px;
+  }
+  
+  .el-tooltip__popper[x-placement^="top"] {
+    margin-bottom: 8px;
+  }
+  
+  .el-tooltip__popper[x-placement^="top"] .popper__arrow,
+  .el-tooltip__popper[x-placement^="top"] .popper__arrow::after {
+    border-top-color: #0000004d;
+  }
+  
+  /** 标题 提示样式重置 end **/
+  
+  /** 所有dialog 下的按钮 start**/
+  .el-dialog .el-button--primary {
+    margin-left: 20px;
+  }
+  
+  /** 所有dialog 下的按钮 end**/
+  
+  .gjalarm p {
+    margin: 5px 0;
+  }
+  
+  .el-picker-panel__link-btn:first-child {
+    margin-right: 15px;
+  }
+  
+  /* 分页 尾部调整*/
+  .pagination-container {
+    padding: 10px 0;
+    border: 1px solid #ebeef5;
+    border-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  /* 页面结构 2018.11.20*/
+  .pagecontainer {
+    margin: 10px;
+    background: #fff;
+  
+  }
+  
+  .pagecontainer .alignItemsCenter {
+    display: flex;
+    align-items: center;
+  }
+  
+  .pagecontainer .alignItemsCenter .el-dialog {
+    margin: 0 auto !important;
+  }
+  
+  .pagecontainer .alignItemsCenter .el-dialog .el-dialog__title {
+    position: relative;
+    top: -4px;
+  }
+  
+  .pagecontainer .title-container {
+    padding: 15px 10px 0;
+    border-bottom: 1px solid #f6f6f6;
+  }
+  
+  .pagecontainer .title-container span {
+    display: inline-block;
+    padding: 0 7px 12px;
+    font-size: 16px;
+    color: #333;
+    /* border-bottom: 2px solid #497efe; */
+  }
+  
+  .pagecontainer .titleTab .el-tabs__header {
+    margin: 0;
+    padding: 0 10px 0;
+    border-bottom: 1px solid #f6f6f6;
+  }
+  
+  .pagecontainer .titleTab .el-tabs__nav {
+    margin-left: 0;
+  }
+  
+  .pagecontainer .titleTab .el-tabs__nav-wrap::after {
+    height: 0;
+  }
+  
+  .pagecontainer .titleTab .el-tabs__item {
+    font-size: 16px;
+    padding: 0 30px;
+    height: 46px;
+    line-height: 46px;
+  }
+  
+  .pagecontainer .titleTab .el-tabs__item:nth-child(2) {
+    text-indent: 8px;
+  }
+  
+  .pagecontainer .titleTab .el-tabs__item:last-child span {
+    text-indent: -6px;
+    display: inline-block;
+  }
+  
+  .pagecontainer .filter-container {
+    padding: 10px;
+  }
+  
+  .pagecontainer .operate-container {
+    padding: 0 10px 10px 10px;
+  
+  }
+  
+  .pagecontainer.role .operate-container {
+    padding-top: 10px;
+  }
+  
+  .pagecontainer .table-container {
+    padding: 0 10px;
+    overflow: hidden;
+  }
+  
+  .pagecontainer .table-container .el-table {
+    border-left: 1px solid #ebeef5;
+    border-right: 1px solid #ebeef5;
+  }
+  
+  .pagecontainer .table-container .el-pagination {
+    text-align: right;
+  }
+  
+  /** 自定义表单样式 **/
+  .formItem_curs .el-select,
+  .formItem_curs .el-date-editor {
+    width: 100%;
+  }
+  
+  .formItem_curs_top .el-form-item__label {
+    padding: 0;
+  }
+  
+  .formItem_curs_top .el-form-item {
+    margin-bottom: 12px;
+  }
+  
+  .formItem_curs_top .h40 .el-form-item__label {
+    height: 40px;
+  }
+  
+  /** 自定义树样式 **/
+  .dept .el-tree .el-tree-node__content,
+  .installAddress .el-tree .el-tree-node__content {
+    /* background-color: #F5F5F5; */
+    height: 48px;
+  }
+  
+  .dept .el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content,
+  .installAddress .el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content {
+    background-color: #EDF2FF;
+  }
+  
+  .dept .is-current>.el-tree-node__content>.tree-expand .tree-label span,
+  .installAddress .is-current>.el-tree-node__content>.tree-expand .tree-label span {
+    color: #497EFE
+  }
+  
+  .dept .el-tree .iconfont,
+  .installAddress .el-tree .iconfont {
+    margin-right: 6px;
+    font-size: 20px;
+    vertical-align: -2px;
+  }
+  
+  .dept .el-tree .tree-expand .tree-label,
+  .installAddress .el-tree .tree-expand .tree-label {
+    font-size: 16px;
+  }
+  
+  /*覆盖弹窗样式*start*/
+  #app .diogipaddt0 .el-dialog__body {
+    padding: 0;
+  }
+  
+  /************图片放大插件样式start*************************************************************************************************************************/
+  .viewer-container,
+  .viewer-navbar {
+    background-color: #000;
+    overflow: hidden
+  }
+  
+  .viewer-canvas,
+  .viewer-container,
+  .viewer-footer,
+  .viewer-player {
+    right: 0;
+    bottom: 0;
+    left: 0
+  }
+  
+  .viewer-button,
+  .viewer-canvas,
+  .viewer-container,
+  .viewer-footer,
+  .viewer-list,
+  .viewer-navbar,
+  .viewer-open,
+  .viewer-title,
+  .viewer-toolbar,
+  .viewer-toolbar>li {
+    overflow: hidden
+  }
+  
+  .viewer-close:before,
+  .viewer-flip-horizontal:before,
+  .viewer-flip-vertical:before,
+  .viewer-fullscreen-exit:before,
+  .viewer-fullscreen:before,
+  .viewer-next:before,
+  .viewer-one-to-one:before,
+  .viewer-play:before,
+  .viewer-prev:before,
+  .viewer-reset:before,
+  .viewer-rotate-left:before,
+  .viewer-rotate-right:before,
+  .viewer-zoom-in:before,
+  .viewer-zoom-out:before {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 20px;
+    height: 20px;
+    color: transparent;
+    background-image: url('/static/images/viewerIcon.png');
+    background-repeat: no-repeat;
+  }
+  
+  .viewer-zoom-in:before {
+    content: 'Zoom In';
+    background-position: 0 0
+  }
+  
+  .viewer-zoom-out:before {
+    content: 'Zoom Out';
+    background-position: -20px 0
+  }
+  
+  .viewer-one-to-one:before {
+    content: 'One to One';
+    background-position: -40px 0
+  }
+  
+  .viewer-reset:before {
+    content: 'Reset';
+    background-position: -60px 0
+  }
+  
+  .viewer-prev:before {
+    content: 'Previous';
+    background-position: -80px 0
+  }
+  
+  .viewer-play:before {
+    content: 'Play';
+    background-position: -100px 0
+  }
+  
+  .viewer-next:before {
+    content: 'Next';
+    background-position: -120px 0
+  }
+  
+  .viewer-rotate-left:before {
+    content: 'Rotate Left';
+    background-position: -140px 0
+  }
+  
+  .viewer-rotate-right:before {
+    content: 'Rotate Right';
+    background-position: -160px 0
+  }
+  
+  .viewer-flip-horizontal:before {
+    content: 'Flip Horizontal';
+    background-position: -180px 0
+  }
+  
+  .viewer-flip-vertical:before {
+    content: 'Flip Vertical';
+    background-position: -200px 0
+  }
+  
+  .viewer-fullscreen:before {
+    content: 'Enter Full Screen';
+    background-position: -220px 0
+  }
+  
+  .viewer-fullscreen-exit:before {
+    content: 'Exit Full Screen';
+    background-position: -240px 0
+  }
+  
+  .viewer-close:before {
+    content: 'Close';
+    background-position: -260px 0
+  }
+  
+  .viewer-container {
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: rgba(0, 0, 0, .5);
+    direction: ltr !important;
+    -ms-touch-action: none;
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none
+  }
+  
+  .viewer-container ::-moz-selection,
+  .viewer-container::-moz-selection {
+    background-color: transparent
+  }
+  
+  .viewer-container ::selection,
+  .viewer-container::selection {
+    background-color: transparent
+  }
+  
+  .viewer-container img {
+    display: block;
+    width: 100%;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: auto;
+    min-height: 0 !important;
+    max-height: none !important
+  }
+  
+  .viewer-player,
+  .viewer-tooltip {
+    display: none;
+    position: absolute
+  }
+  
+  .viewer-canvas {
+    position: absolute;
+    top: 0
+  }
+  
+  .viewer-canvas>img {
+    width: auto;
+    max-width: 90% !important;
+    height: auto;
+    margin: 15px auto
+  }
+  
+  .viewer-footer {
+    position: absolute;
+    text-align: center
+  }
+  
+  .viewer-navbar {
+    background-color: rgba(0, 0, 0, .5)
+  }
+  
+  .viewer-list {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 50px;
+    margin: 0;
+    padding: 1px 0
+  }
+  
+  .viewer-list>li {
+    font-size: 0;
+    line-height: 0;
+    float: left;
+    overflow: hidden;
+    width: 30px;
+    height: 50px;
+    cursor: pointer;
+    opacity: .5;
+    color: transparent;
+    filter: alpha(opacity=50)
+  }
+  
+  .viewer-list>li+li {
+    margin-left: 1px
+  }
+  
+  .viewer-list>.viewer-active {
+    opacity: 1;
+    filter: alpha(opacity=100)
+  }
+  
+  .viewer-player {
+    top: 0;
+    cursor: none;
+    background-color: #000
+  }
+  
+  .viewer-player>img {
+    position: absolute;
+    top: 0;
+    left: 0
+  }
+  
+  .viewer-toolbar {
+    width: 280px;
+    margin: 0 auto 5px;
+    padding: 3px 0
+  }
+  
+  .viewer-toolbar>li {
+    float: left;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, .5)
+  }
+  
+  .viewer-toolbar>li:hover {
+    background-color: #000;
+    background-color: rgba(0, 0, 0, .8)
+  }
+  
+  .viewer-toolbar>li:before {
+    margin: 2px
+  }
+  
+  .viewer-toolbar>li+li {
+    margin-left: 1px
+  }
+  
+  .viewer-toolbar>.viewer-play {
+    width: 30px;
+    height: 30px;
+    margin-top: -3px;
+    margin-bottom: -3px
+  }
+  
+  .viewer-toolbar>.viewer-play:before {
+    margin: 5px
+  }
+  
+  .viewer-tooltip {
+    font-size: 12px;
+    line-height: 20px;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -25px;
+    text-align: center;
+    color: #fff;
+    border-radius: 10px;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, .8)
+  }
+  
+  .viewer-title {
+    font-size: 12px;
+    line-height: 1;
+    display: inline-block;
+    max-width: 90%;
+    margin: 0 5% 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    opacity: .8;
+    color: #ccc;
+    filter: alpha(opacity=80)
+  }
+  
+  .viewer-title:hover {
+    opacity: 1;
+    filter: alpha(opacity=100)
+  }
+  
+  .viewer-button {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, .5)
+  }
+  
+  .viewer-button:before {
+    position: absolute;
+    bottom: 15px;
+    left: 15px
+  }
+  
+  .viewer-fixed {
+    position: fixed
+  }
+  
+  .viewer-show {
+    display: block
+  }
+  
+  .viewer-hide {
+    display: none
+  }
+  
+  .viewer-invisible {
+    visibility: hidden
+  }
+  
+  .viewer-move {
+    cursor: move;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: grab
+  }
+  
+  .viewer-fade {
+    opacity: 0;
+    filter: alpha(opacity=0)
+  }
+  
+  .viewer-in {
+    opacity: 1;
+    filter: alpha(opacity=100)
+  }
+  
+  .viewer-transition {
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out
+  }
+  
+  @media (max-width:767px) {
+    .viewer-hide-xs-down {
+      display: none
+    }
+  }
+  
+  @media (max-width:991px) {
+    .viewer-hide-sm-down {
+      display: none
+    }
+  }
+  
+  @media (max-width:1199px) {
+    .viewer-hide-md-down {
+      display: none
+    }
+  }
+  .avatar-uploader .el-upload, .avatar-uploader,.avatar-uploader .avatar-uploader-icon{
+    height: 89px!important;
+  }
+  .sizeName>.el-upload,.sizeName ,.sizeName>.el-upload>.avatar-uploader-icon,.sizeName .avatar-uploader{
+    height: 178px !important ;
+  }
+  /**图片放大插件样式结束***********************************************************************************************************************************************************************************************/
+  
+  /* 值守大屏 */
+  .big-screen .alarm-info .el-table{
+    background-color: transparent; 
+  }
+  .big-screen .alarm-info .el-table tr {
+    background-color: transparent !important;
+  }
+  .big-screen .alarm-info .xhsgis-custom-default .el-table th {
+    background-color: transparent;
+    color: #9BA8D4;
+  }
+  .big-screen .alarm-info .el-table--border th,.big-screen .alarm-info .el-table--border td {
+      font-size: 14px;
+      color: #9BA8D4;
+      border-right: 1px solid #34416B;
+  }
+  .big-screen .alarm-info .el-table th.is-leaf,.big-screen .alarm-info .el-table td{
+      font-size: 14px;
+      color: #9BA8D4;
+      border-bottom: 1px solid #34416B;
+  }
+  .big-screen .alarm-info .el-table--striped .el-table__body tr.el-table__row--striped td {
+    background: transparent;
+  }
+  .big-screen .alarm-info .el-table th.is-leaf,.big-screen .alarm-info .el-table td {
+    border-bottom: 1px solid #34416B;
+    background: transparent;
+  }
+  .big-screen .alarm-info .el-table::before{
+    display: none;
+  }
+  .big-screen .new-row {
+    background-color: #497efe !important;
+    animation: background-infinite 2s linear infinite;
+  }
+  .big-screen .el-pagination{
+    float: right;
+    padding: 6px 20px 6px 0px;
+  }
+  .big-screen  .el-pagination button{
+    background-color: transparent!important;
+    color: #9BA8D4!important;
+  }
+  .big-screen .el-pagination .number{
+    background-color: transparent!important;
+    color: #9BA8D4!important;
+  }
+  .big-screen .el-pagination .number.active{
+    color: #fff !important;
+  }
+  .big-screen .el-pagination .el-pagination__jump{
+    color: #9BA8D4!important;
+  }
+  .big-screen .el-pagination .el-pagination__jump input{
+    background-color: rgba(104, 139, 255, .29)!important;
+    color: #fff !important;
+    border: 1px solid rgb(155, 168, 212);
+  }
+  .big-screen .el-table th {
+    background-color: transparent;
+    color: green;
+  }
+  .big-screen .el-table__body tr:hover>td{
+    background-color: #4575FF !important;
+  }
+  .big-screen ::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+    margin: -2px;
+  }
+  .big-screen ::-webkit-scrollbar {
+      width: 4px;
+      height: 8px;
+  }
+  .big-screen ::-webkit-scrollbar-thumb {
+    background: #34416B;
+  }
+  
+  /* DateTimePicker 日期时间选择器 隐藏此刻 */
+  body > div.el-picker-panel.el-date-picker.el-popper.has-time > div.el-picker-panel__footer > button.el-button.el-picker-panel__link-btn.el-button--text.el-button--mini > span{
+    display: none;
+  }

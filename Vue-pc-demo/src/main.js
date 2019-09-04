@@ -2,11 +2,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 // store
-import store from './store'
+// import store from './store'
 // 权限== 页面重定向 和token的校验(放在和main.js  同级) 
 import '@/permission'
 // 按钮权限表
-import PBTN from '@/utils/permissions.cfg' 
+// import PBTN from '@/utils/permissions.cfg' 
 
 
 // 公用js--utils中 
@@ -29,7 +29,7 @@ import "@/styles/index.scss"; // 全局自定义的css样式
 import '@/styles/self.scss'
 
 Vue.use(Element);
-Vue.use(PBTN);
+// Vue.use(PBTN);
 
 // 注册全局的filter 
 Object.keys(filters).forEach(key => {
@@ -43,6 +43,5 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  store,
   render: h => h(App)
 })

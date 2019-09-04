@@ -3,7 +3,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 // 导入其他分割的module
-import demo from './modules/demos'
+import demo from './modules/demo'
 
 // 导入getters 所有数据的getter
 import getters from './getters'
@@ -13,7 +13,7 @@ import getters from './getters'
 // 使用
 Vue.use(Vuex);
 // 定义并导出 store
-const  store = new Vuex({
+const  store = new Vuex.Store({
     modules:{
         demo
 

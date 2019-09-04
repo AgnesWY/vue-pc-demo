@@ -10,6 +10,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+// DllPlugin提升webpack打包速度
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -119,7 +121,19 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    new webpack.DllReferencePlugin({
+      context: path.resolve(__dirname, '..'), 
+      manifest: require('./vendor-manifest.json')
+    }),
+    //这个主要是将生成的vendor.dll.js文件加上hash值插入到页面中。
+    // new AddAssetHtmlPlugin([{
+    //   filepath: path.resolve(__dirname,'../dist/static/js/vendor.dll.js'),
+    //   outputPath: utils.assetsPath('js'),
+    //   publicPath: path.posix.join(config.build.assetsPublicPath, 'static/js'),
+    //   includeSourcemap: false,
+    //   hash: true,
+    // }]),
   ]
 })
 

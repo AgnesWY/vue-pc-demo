@@ -13,9 +13,14 @@ export const constantRouterMap = [
     component: layout,
     children:[
       {
-        path: 'test',
+        path: 'start',
         name: 'HelloWorld',
         component:_import('start')
+      },
+      {
+        path: 'test',
+        name: 'test',
+        component:_import('test')
       }
     ]
   },

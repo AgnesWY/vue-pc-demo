@@ -3,6 +3,11 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+// var ipPath = "https://m.houduniot.com"; //测试
+// var ipPath = 'http://api.dev.houduniot.com:82/'//  开发
+// var ipPath = 'http://192.168.11.146:9999'; 
+// var ipPath = "http://192.168.31.81:9999"; //测试
+// var ipPath = "https://wx.houduniot.com/" //生产
 
 module.exports = {
   dev: {
@@ -10,10 +15,20 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      // '/auth':{
+      //   target: ipPath,
+      //   changeOrigin: true,
+      //   pathRewrite:{
+      //     '/auth':'/auth'
+
+      //   }
+      // }
+    },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host: '0.0.0.0', //便于除本机以外的机器 访问服务
+    // host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,

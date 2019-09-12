@@ -124,7 +124,8 @@ const webpackConfig = merge(baseWebpackConfig, {
     ]),
     new webpack.DllReferencePlugin({
       context: path.resolve(__dirname, '..'), 
-      manifest: require('./vendor-manifest.json')
+      
+      manifest: path.join(__dirname, '../static/dll', 'vendor-manifest.json')
     }),
     //这个主要是将生成的vendor.dll.js文件加上hash值插入到页面中。
     // new AddAssetHtmlPlugin([{

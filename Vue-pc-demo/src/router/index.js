@@ -8,6 +8,12 @@ Vue.use(Router)
 
 export const constantRouterMap = [
   {
+    path: '/',
+    name: '/',
+    component: layout,
+    hidden: true
+  },
+  {
     path: '/main',
     name: 'main',
     component: layout,
@@ -24,6 +30,12 @@ export const constantRouterMap = [
       }
     ]
   },
+  // {
+  //   path: '/form',
+  //   name: 'form',
+  //   component: _import('validate'),
+  //   hidden: true
+  // },
   
   {
     path: '/404',

@@ -18,15 +18,17 @@ router.beforeEach((to,from,next) =>{
     // to.path  当前的路由
     // next(path) 跳转到path这个路由
     if(to.path == "/"){
-        // next({
-        //     path: "/main/test"
-        // })
-
+        next({
+            path: "/main/start"
+        })
+    } else{
+        next();
     }
+    // NProgress.done()
     
 
 })
 router.afterEach(()=>{
-    NProgress.down()
+    NProgress.done()
 })
 

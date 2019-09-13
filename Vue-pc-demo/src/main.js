@@ -27,9 +27,13 @@ import 'element-ui/lib/theme-chalk/index.css'
 // import "normalize.css"; // normalize.css 样式格式化
 import "@/styles/index.scss"; // 全局自定义的css样式
 import '@/styles/self.scss'
+import Mock from './mock/api.js'
+import axios from 'axios'
 
 Vue.use(Element);
 // Vue.use(PBTN);
+
+Vue.prototype.$axios = axios;
 
 // 注册全局的filter 
 Object.keys(filters).forEach(key => {
@@ -43,5 +47,6 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  Mock,
   render: h => h(App)
 })

@@ -11,6 +11,20 @@ import img_404 from "@/assets/images/404_images/404.png";
 export default {
     components:{
         helloWorld
+    },
+    created(){
+        this.$axios.get('/user/login').then((res)=>{
+            console.log(res);
+        })
+        this.test()
+    },
+    methods:{
+        test(){
+           this.$axios.get('/api/data').then((res)=>{
+            console.log(res);
+        })
+        }
+
     }
 
 }
